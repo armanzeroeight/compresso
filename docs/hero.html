@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Compresso hero</title>
+<!--
+  Source for docs/hero-light.png and docs/hero-dark.png, the README banner.
+
+  Every value below is copied from compresso-web/app/globals.css. If the two
+  ever disagree, that file wins: this is a mirror, not a second design system.
+
+  Capture (1280x640 at 2x, from the repo root):
+
+    BRAVE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+    "$BRAVE" --headless --disable-gpu --hide-scrollbars \
+      --force-device-scale-factor=2 --window-size=1280,640 \
+      --screenshot=docs/hero-light.png "file://$PWD/docs/hero.html?theme=light"
+    "$BRAVE" --headless --disable-gpu --hide-scrollbars \
+      --force-device-scale-factor=2 --window-size=1280,640 \
+      --screenshot=docs/hero-dark.png "file://$PWD/docs/hero.html?theme=dark"
+
+  The platform chip uses U+F8FF, the Apple glyph, which resolves from the
+  system font on macOS only. Capture on a Mac or it renders as a blank box.
+-->
+<style>
+  :root {
+    --cream: #F8F6EF; --canvas: #FBFAF5; --card: #FFFEF9;
+    --line: #DFE3DF; --line-hover: #9EAEA4;
+    --ink: #26352E; --ink-2: #607068; --ink-3: #78847D;
+    --pine: #183D30; --on-pine: #F8F6EF; --pine-detail: #C9D8CF;
+    --logo: var(--pine);
+    --claude: #C47A42; --claude-sent: #B86D36;
+    --codex: #567CA8; --codex-sent: #4F739B;
+    --chip-line: #DCE2DD; --link: #557064;
+    --elev-card: 0 6px 18px rgba(40, 58, 49, .07);
+    --radius-card: 12px; --radius-control: 8px; --radius-pill: 999px;
+    --font-serif: "Iowan Old Style", Baskerville, Georgia, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  }
+  :root[data-theme="dark"] {
+    --cream: #131A16; --canvas: #131A16; --card: #1A221C;
+    --line: #2A352D; --line-hover: #3D4A40;
+    --ink: #E8ECE7; --ink-2: #A7B3AA; --ink-3: #7D8A80;
+    --pine: #1F4A39; --on-pine: #F8F6EF; --logo: #F8F6EF;
+    --claude-sent: #CD8148; --codex-sent: #6B93C8;
+    --chip-line: #2A352D; --link: #8FB3A0;
+    --elev-card: 0 6px 18px rgba(0, 0, 0, .35);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden;
+    background: var(--cream); color: var(--ink);
+    font-family: var(--font-sans); font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Centred pair rather than a 1fr/auto grid: the copy is capped at ~32ch, so
+     a stretching first column just opened a dead gulf in the middle of the
+     canvas. Both blocks size to their content and the leftover becomes equal
+     outer margin. */
+  .hero {
+    width: 100%; height: 100%; padding: 0 34px;
+    display: flex; align-items: center; justify-content: center; gap: 78px;
+  }
+  .copy { max-width: 700px; }
+
+  /* ── Left: brand, headline, platform ─────────────────────────────────── */
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand .mark { width: 34px; height: 34px; color: var(--logo); display: block; }
+  .brand .word { font-size: 1.85rem; font-weight: 700; letter-spacing: -.02em; }
+
+  h1 {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: 6rem; line-height: .98; letter-spacing: -.05em;
+    margin: 34px 0 0;
+  }
+  .lede {
+    font-size: 1.4rem; line-height: 1.5; color: var(--ink-2);
+    max-width: 35ch; margin: 28px 0 0;
+  }
+
+  .meta { display: flex; align-items: baseline; gap: 24px; margin-top: 40px; }
+  .url {
+    font-family: var(--font-mono); font-size: 1rem; color: var(--link);
+    letter-spacing: -.01em;
+  }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 9px;
+    border: 1px solid var(--chip-line); border-radius: var(--radius-pill);
+    padding: 10px 19px; background: var(--card);
+    font-family: var(--font-mono); font-size: .85rem;
+    letter-spacing: .05em; color: var(--ink-2);
+  }
+  /* U+F8FF. Kept in its own span so the fallback stack is stated once, and so
+     a missing glyph is obvious in review rather than silently blank. */
+  .chip .apple { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 1.06rem; line-height: 1; }
+
+  /* ── Right: the flow, mirroring components/hero-flow.tsx ─────────────── */
+  .vflow {
+    width: 462px; padding: 36px 32px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius-card); box-shadow: var(--elev-card);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .vflow .node {
+    border: 1px solid var(--line); border-radius: var(--radius-control);
+    padding: 14px 18px; background: var(--canvas); text-align: center;
+  }
+  .vflow .n-title { font-size: 1.02rem; font-weight: 650; }
+  .vflow .n-sub { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-3); margin-top: 4px; }
+  .vflow .node-pine {
+    background: var(--pine); border-color: var(--pine);
+    display: flex; align-items: center; justify-content: center; gap: 12px; text-align: left;
+  }
+  .vflow .node-pine .mark { width: 24px; height: 24px; flex: none; color: var(--on-pine); display: block; }
+  .vflow .node-pine .n-title { color: var(--on-pine); }
+  .vflow .node-pine .n-sub { color: var(--pine-detail); }
+  .vflow .agents { display: flex; flex-direction: column; gap: 10px; align-self: stretch; }
+  .vflow .agent {
+    display: flex; align-items: center; gap: 11px;
+    border: 1px solid var(--line); border-left-width: 4px;
+    border-radius: var(--radius-control); padding: 11px 16px;
+    background: var(--canvas); font-size: 1.02rem; font-weight: 650;
+  }
+  .vflow .agent.claude { border-left-color: var(--claude); }
+  .vflow .agent.codex { border-left-color: var(--codex); }
+  .vflow .agent .mark { width: 18px; height: 18px; flex: none; display: block; }
+
+  .vlane { position: relative; height: 100px; align-self: stretch; }
+  .vwire { position: absolute; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
+  .vwire::after {
+    content: ""; position: absolute; left: -3px; top: -1px;
+    border: 3.5px solid transparent; border-bottom-color: var(--line-hover);
+  }
+  .vwire.w-claude { left: calc(50% - 18px); }
+  .vwire.w-codex { left: calc(50% + 18px); }
+  .vlabel {
+    position: absolute; left: calc(50% + 33px); top: 50%; transform: translateY(-50%);
+    font-family: var(--font-mono); font-size: .76rem; color: var(--ink-3); letter-spacing: .05em;
+  }
+
+  /* The animation's packets, frozen. On the live site a request rides up the
+     raw lane and continues as a shorter, fully saturated bar; here the two
+     lanes simply show both states at once, which is the whole idea in one
+     frame. Heights below are hand-picked from the live run's range (16-40px
+     raw) and its 0.42 compression ratio, so the drawing does not overstate
+     what the animation shows. */
+  .vbar { position: absolute; left: -4.5px; width: 10px; border-radius: 5px; }
+  .raw .w-claude .vbar { height: 45px; background: var(--claude-sent); opacity: .45; top: 30px; }
+  .raw .w-codex  .vbar { height: 36px; background: var(--codex-sent);  opacity: .45; top: 50px; }
+  .out .w-claude .vbar {
+    height: 19px; background: var(--claude-sent); opacity: 1; top: 34px;
+    box-shadow: 0 0 8px var(--claude-sent);
+  }
+  .out .w-codex .vbar {
+    height: 16px; background: var(--codex-sent); opacity: 1; top: 57px;
+    box-shadow: 0 0 8px var(--codex-sent);
+  }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="copy">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 364 357" fill="currentColor" aria-hidden="true">
+          <path d="M276 0H88V88H276V0Z"/>
+          <path d="M0 88H88V269H276V88H364V181L188 357H0V88Z"/>
+        </svg>
+        <span class="word">Compresso</span>
+      </div>
+
+      <h1>Same answers.<br>Fewer tokens.</h1>
+
+      <p class="lede">
+        A local compression layer for Claude&nbsp;Code and Codex. It shrinks what
+        your agent reads before the request is billed.
+      </p>
+
+      <div class="meta">
+        <div class="chip"><span class="apple">&#xF8FF;</span> macOS 14+ &middot; Apple Silicon</div>
+        <span class="url">compresso.ai</span>
+      </div>
+    </div>
+
+    <aside class="vflow">
+      <div class="node">
+        <div class="n-title">Anthropic &middot; OpenAI</div>
+        <div class="n-sub">your account</div>
+      </div>
+
+      <div class="vlane out">
+        <span class="vwire w-claude"><i class="vbar"></i></span>
+        <span class="vwire w-codex"><i class="vbar"></i></span>
+        <span class="vlabel">compressed</span>
+      </div>
+
+      <div class="node node-pine">
+        <svg class="mark" viewBox="0 0 364 357" fill="currentColor" aria-hidden="true">
+          <path d="M276 0H88V88H276V0Z"/>
+          <path d="M0 88H88V269H276V88H364V181L188 357H0V88Z"/>
+        </svg>
+        <div>
+          <div class="n-title">Compresso</div>
+          <div class="n-sub">on your Mac</div>
+        </div>
+      </div>
+
+      <div class="vlane raw">
+        <span class="vwire w-claude"><i class="vbar"></i></span>
+        <span class="vwire w-codex"><i class="vbar"></i></span>
+        <span class="vlabel">raw context</span>
+      </div>
+
+      <div class="agents">
+        <div class="agent claude">
+          <svg class="mark" viewBox="0 0 100 100" fill="#d97757" aria-hidden="true">
+            <path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/>
+          </svg>
+          Claude Code
+        </div>
+        <div class="agent codex">
+          <svg class="mark" viewBox="0 0 320 320" fill="currentColor" aria-hidden="true" style="color: var(--ink)">
+            <path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"/>
+          </svg>
+          Codex
+        </div>
+      </div>
+    </aside>
+  </div>
+
+<script>
+  // ?theme=dark flips the palette, so one source file produces both captures.
+  // Anything other than "dark" leaves the light default in place.
+  var t = new URLSearchParams(location.search).get("theme");
+  if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+</script>
+</body>
+</html>

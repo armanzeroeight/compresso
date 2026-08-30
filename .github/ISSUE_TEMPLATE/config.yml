@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Account, billing, or subscription
+    url: https://compresso.ai/faq#how-do-i-manage-my-plan-payment-method-or-unsubscribe
+    about: Manage your plan, payment method, or cancellation in the customer portal. Please keep account details out of public issues.
+  - name: Questions, ideas, and feedback
+    url: https://github.com/armanzeroeight/compresso/discussions
+    about: Not sure it is a bug? Start a discussion. The issue tracker is for problems with a release.
+  - name: Security disclosure
+    url: https://compresso.ai/privacy
+    about: Found something with security impact? Report it privately using the contact address on our privacy page, never as a public issue.
+  - name: Documentation and FAQ
+    url: https://compresso.ai/faq
+    about: How it works, what leaves your Mac, savings math, trials, and uninstalling.

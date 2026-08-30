@@ -1,0 +1,100 @@
+name: Bug report
+description: Something in a Compresso release is broken or behaving unexpectedly.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this.
+
+        **Please do not paste prompts, source code, or credentials.** Compresso is
+        built so that none of that ever reaches us, and an issue is a public page.
+        Describe what happened instead, and redact anything you are unsure about.
+
+        For account, billing, or subscription questions, use the customer portal
+        linked from our [FAQ](https://compresso.ai/faq) rather than opening an issue.
+
+  - type: checkboxes
+    id: paused
+    attributes:
+      label: Does it still happen with Compresso paused?
+      description: >
+        Pause Compresso from the menu bar and try the same thing again. This one
+        answer separates a Compresso bug from something happening between your
+        agent and the provider, and it is the fastest way to a fix.
+      options:
+        - label: I tried it with Compresso paused, and the problem went away (so it looks like Compresso).
+        - label: I tried it with Compresso paused, and the problem is still there.
+        - label: I could not try this, and I have said why below.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you got instead.
+      placeholder: |
+        I ran a Claude Code session with a large test output, and ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Which agent?
+      options:
+        - Claude Code
+        - Codex
+        - Both
+        - Neither / not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plan
+    attributes:
+      label: How does that agent authenticate?
+      description: Subscription and API-key traffic take different paths through Compresso.
+      options:
+        - Claude subscription (Pro or Max)
+        - ChatGPT subscription (Plus or Pro)
+        - Anthropic API key
+        - OpenAI API key
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Compresso version
+      description: The release you installed. If you are not sure, the Settings screen shows whether an update is pending.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      description: Apple menu → About This Mac.
+      placeholder: "15.2 (Apple Silicon)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: If you can get it to happen on demand, the recipe helps enormously.
+      placeholder: |
+        1. Connect Claude Code
+        2. Run a command that produces a long build log
+        3. ...
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: >
+        Screenshots of the app are welcome. If you attach any log output, please
+        check it for file paths and payload contents first.
