@@ -9,7 +9,7 @@
 
 **Cut Claude Code and Codex token costs. Local-first. Honest numbers.**
 
-Compresso is a macOS menu-bar app that runs a local compression layer between your AI coding agents and their providers. It compresses the tool output, logs, files and history that bloat every request, before the request is billed. Your prompts never leave your Mac.
+Compresso is a macOS app that runs a local compression layer between your AI coding agents and their providers. It compresses the tool output, logs, files and history that bloat every request, before the request is billed. Your prompts never leave your Mac.
 
 [![Download for macOS](https://img.shields.io/github/v/release/armanzeroeight/compresso?label=Download%20for%20macOS&style=for-the-badge&logo=apple&logoColor=white&color=183d30)](https://github.com/armanzeroeight/compresso/releases/latest)
 [![Website](https://img.shields.io/badge/compresso.ai-website-183d30?style=for-the-badge)](https://compresso.ai)
@@ -17,10 +17,10 @@ Compresso is a macOS menu-bar app that runs a local compression layer between yo
 
 ## Features
 
-- **Fewer tokens on every request.** The repetitive machine output that fills an agent's context, JSON, shell output, build logs, compresses by more than 80 percent in the engine's published benchmarks. What a whole session saves depends on how much of it is that, and the measured spread is below.
+- **Save tokens on every request.** The repetitive machine output that fills an agent's context, JSON, shell output, build logs, compresses by more than 80 percent in the engine's published benchmarks. What a whole session saves depends on how much of it is that, and the measured spread is below.
 - **Cache discounts survive.** The start of each request stays byte-identical from turn to turn, so the provider's cache discount still applies, and it is counted apart from the tokens that were never sent at all.
 - **One click per agent.** Compresso finds the agents you already have, points each at the local intercept, and puts its config back exactly as it was when you disconnect.
-- **Add-ons.** MCP servers, Codebase Memory and Context7 or one you name yourself, installed and registered into every connected agent with one switch, and removed again when you switch them off.
+- **Add-ons.** MCP servers, Codebase Memory and Context7 or your custom MCP server, installed and registered into every connected agent with one switch, and removed again when you switch them off.
 - **Numbers you can check.** Token counts are measured. Dollar figures are marked as estimates, and the two are never blended into one headline.
 - **Out of the way when it matters.** Pause without disconnecting, and if the engine is down or your subscription lapses, requests pass straight through rather than failing.
 
