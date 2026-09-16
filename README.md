@@ -15,11 +15,20 @@ Compresso is a macOS menu-bar app that runs a local compression layer between yo
 [![Website](https://img.shields.io/badge/compresso.ai-website-183d30?style=for-the-badge)](https://compresso.ai)
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B%20Apple%20Silicon-555?style=for-the-badge)](https://github.com/armanzeroeight/compresso/releases/latest)
 
+## Features
+
+- **Fewer tokens on every request.** The repetitive machine output that fills an agent's context, JSON, shell output, build logs, compresses by more than 80 percent in the engine's published benchmarks. What a whole session saves depends on how much of it is that, and the measured spread is below.
+- **Cache discounts survive.** The start of each request stays byte-identical from turn to turn, so the provider's cache discount still applies, and it is counted apart from the tokens that were never sent at all.
+- **One click per agent.** Compresso finds the agents you already have, points each at the local intercept, and puts its config back exactly as it was when you disconnect.
+- **Add-ons.** MCP servers, Codebase Memory and Context7 or one you name yourself, installed and registered into every connected agent with one switch, and removed again when you switch them off.
+- **Numbers you can check.** Token counts are measured. Dollar figures are marked as estimates, and the two are never blended into one headline.
+- **Out of the way when it matters.** Pause without disconnecting, and if the engine is down or your subscription lapses, requests pass straight through rather than failing.
+
 ## What it does
 
 Your agent talks to a loopback port on your Mac instead of talking to the provider directly. Compresso compresses what it finds in the request, then forwards it to Anthropic or OpenAI under your own credentials.
 
-It compresses; it does not summarize, and it does not drop messages. Every message stays where it is and what shrinks is the contents, so the model sees the same conversation with less of it spent on repetition. Structured, repetitive machine output is where the slack lives: JSON, shell output, build logs. Source code is routed straight through untouched.
+It compresses; it does not summarize, and it does not drop messages. Every message stays where it is and what shrinks is the contents, so the model sees the same conversation with less of it spent on repetition. Source code is routed straight through untouched.
 
 Full pipeline: [how it works](https://compresso.ai/how-it-works).
 
@@ -27,14 +36,6 @@ Full pipeline: [how it works](https://compresso.ai/how-it-works).
   <source media="(prefers-color-scheme: dark)" srcset="docs/app-overview-dark.png">
   <img alt="The Compresso overview screen: cost saved, cache discounts and context optimized across the top, above a seven-day chart splitting Claude Code and Codex into tokens sent and tokens removed." src="docs/app-overview-light.png">
 </picture>
-
-## Features
-
-- **Cache discounts survive.** The start of each request stays byte-identical from turn to turn, so the provider's cache discount still applies, and it is counted apart from the tokens that were never sent at all.
-- **One click per agent.** Compresso finds the agents you already have, points each at the local intercept, and puts its config back exactly as it was when you disconnect.
-- **Add-ons.** MCP servers, Codebase Memory and Context7 or one you name yourself, installed and registered into every connected agent with one switch, and removed again when you switch them off.
-- **Numbers you can check.** Token counts are measured. Dollar figures are marked as estimates, and the two are never blended into one headline.
-- **Out of the way when it matters.** Pause without disconnecting, and if the engine is down or your subscription lapses, requests pass straight through rather than failing.
 
 ## Install
 
