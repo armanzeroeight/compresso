@@ -38,6 +38,14 @@ Full pipeline: [how it works](https://compresso.ai/how-it-works).
   <img alt="The Compresso overview screen: cost saved, cache discounts and context optimized across the top, above a seven-day chart splitting Claude Code and Codex into tokens sent and tokens removed." src="docs/app-overview-light.png">
 </picture>
 
+## Features
+
+- **Compression, not summarizing.** Tool output, logs, JSON and history shrink. No message is dropped and nothing is rewritten into a summary, so the model sees the same conversation with less of it spent on repetition.
+- **One click per agent.** Compresso finds the agents you already have, points each at the local intercept, and puts its config back exactly as it was when you disconnect.
+- **Add-ons.** MCP servers, Codebase Memory and Context7 or one you name yourself, installed and registered into every connected agent with one switch, and removed again when you switch them off.
+- **Numbers you can check.** Token counts are measured. Dollar figures are marked as estimates, and the two are never blended into one headline.
+- **Out of the way when it matters.** Pause without disconnecting, and if the engine is down or your subscription lapses, requests pass straight through rather than failing.
+
 ## What it never does
 
 This is the part worth reading twice. Each item is enforced in code, not promised in marketing copy.
@@ -108,6 +116,11 @@ Every tier includes everything, up to 2 Macs per account. Yearly billing and an 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/app-agents-dark.png">
   <img alt="The Compresso agents screen: Claude Code and Codex each listed as Connected, with a Disconnect button beside them." src="docs/app-agents-light.png">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/app-addons-dark.png">
+  <img alt="The Compresso add-ons screen: Codebase Memory and Context7, each with a description, where its data lives, a source link, a per-agent registration line and a switch, above a button for adding a custom MCP server." src="docs/app-addons-light.png">
 </picture>
 
 ## Questions
