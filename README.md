@@ -15,16 +15,6 @@ Compresso is a macOS menu-bar app that runs a local compression layer between yo
 [![Website](https://img.shields.io/badge/compresso.ai-website-183d30?style=for-the-badge)](https://compresso.ai)
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B%20Apple%20Silicon-555?style=for-the-badge)](https://github.com/armanzeroeight/compresso/releases/latest)
 
-## Install
-
-Requires macOS 14 (Sonoma) or later on Apple Silicon.
-
-1. Download the `.dmg` from the [latest release](https://github.com/armanzeroeight/compresso/releases/latest)
-2. Open it and drag **Compresso** to Applications
-3. Launch it. It appears in your menu bar and walks you through connecting Claude Code and Codex.
-
-Every release is code-signed and notarized by Apple, so macOS opens it without Gatekeeper warnings, and each one carries a signed auto-update manifest that keeps the app current after the first install.
-
 ## What it does
 
 Your agent talks to a loopback port on your Mac instead of talking to the provider directly. Compresso compresses what it finds in the request, then forwards it to Anthropic or OpenAI under your own credentials.
@@ -40,11 +30,21 @@ Full pipeline: [how it works](https://compresso.ai/how-it-works).
 
 ## Features
 
-- **Compression, not summarizing.** Tool output, logs, JSON and history shrink. No message is dropped and nothing is rewritten into a summary, so the model sees the same conversation with less of it spent on repetition.
+- **Cache discounts survive.** The start of each request stays byte-identical from turn to turn, so the provider's cache discount still applies, and it is counted apart from the tokens that were never sent at all.
 - **One click per agent.** Compresso finds the agents you already have, points each at the local intercept, and puts its config back exactly as it was when you disconnect.
 - **Add-ons.** MCP servers, Codebase Memory and Context7 or one you name yourself, installed and registered into every connected agent with one switch, and removed again when you switch them off.
 - **Numbers you can check.** Token counts are measured. Dollar figures are marked as estimates, and the two are never blended into one headline.
 - **Out of the way when it matters.** Pause without disconnecting, and if the engine is down or your subscription lapses, requests pass straight through rather than failing.
+
+## Install
+
+Requires macOS 14 (Sonoma) or later on Apple Silicon.
+
+1. Download the `.dmg` from the [latest release](https://github.com/armanzeroeight/compresso/releases/latest)
+2. Open it and drag **Compresso** to Applications
+3. Launch it. It appears in your menu bar and walks you through connecting Claude Code and Codex.
+
+Every release is code-signed and notarized by Apple, so macOS opens it without Gatekeeper warnings, and each one carries a signed auto-update manifest that keeps the app current after the first install.
 
 ## What it never does
 
