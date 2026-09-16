@@ -107,7 +107,7 @@ Every tier includes everything, up to 2 Macs per account. Yearly billing and an 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/app-agents-dark.png">
-  <img alt="The Compresso agents screen: Claude Code listed as installed but not connected with a Connect button, and Codex listed as connected with a Disconnect button." src="docs/app-agents-light.png">
+  <img alt="The Compresso agents screen: Claude Code and Codex each listed as Connected, with a Disconnect button beside them." src="docs/app-agents-light.png">
 </picture>
 
 ## Questions
